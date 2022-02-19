@@ -81,6 +81,10 @@ PRODUCT_PACKAGES += \
     GoogleDialerOverlayCustom \
     SettingsOverlayCustom
 
+# Permissions
+PRODUCT_COPY_FILES += \
+    vendor/custom/config/permissions/privapp-permissions-settings.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-settings.xml
+
 # TouchGesture
 PRODUCT_PACKAGES += \
     TouchGestures
