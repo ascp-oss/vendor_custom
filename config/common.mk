@@ -94,3 +94,9 @@ include vendor/custom/config/ota.mk
 
 # Version
 include vendor/custom/config/version.mk
+
+# ColumbusService
+ifneq ($(TARGET_SUPPORTS_QUICK_TAP),false)
+PRODUCT_PACKAGES += \
+    ColumbusService
+endif
