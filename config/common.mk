@@ -54,6 +54,10 @@ endif
 PRODUCT_COPY_FILES += \
     vendor/custom/config/permissions/privapp-permissions-lineagehw.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-lineagehw.xml
 
+# GameSpace
+PRODUCT_PACKAGES += \
+    GameSpace
+
 # Google Photos Pixel Exclusive XML
 PRODUCT_COPY_FILES += \
     vendor/custom/prebuilt/common/etc/sysconfig/pixel_2016_exclusive.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/pixel_2016_exclusive.xml
