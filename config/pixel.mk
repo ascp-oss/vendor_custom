@@ -1,19 +1,17 @@
 WITH_GMS := true
+TARGET_INCLUDE_PIXEL_LAUNCHER := true
 
-# Pixel Clocks
-$(call inherit-product, vendor/pixel/clocks/products/clocks.mk)
+# SetupWizard
+ifneq ($(WITH_GMS), true)
+PRODUCT_PRODUCT_PROPERTIES += \
+    setupwizard.theme=glif_v4 \
+    setupwizard.feature.day_night_mode_enabled=true
+endif
 
-# Pixel GMS
-$(call inherit-product, vendor/pixel/gms/products/gms.mk)
+ifeq ($(WITH_GMS), true)
+PRODUCT_PRODUCT_PROPERTIES += \
+    with_google_apps=true
 
-# Pixel GSans
+$(call inherit-product, vendor/gms/products/gms.mk)
 $(call inherit-product, vendor/pixel/gsans/products/gsans.mk)
-
-# Pixel Launcher
-$(call inherit-product, vendor/pixel/launcher/products/launcher.mk)
-
-# Pixel ThemePicker
-$(call inherit-product, vendor/pixel/sounds/products/sounds.mk)
-
-# Pixel ThemePicker
-$(call inherit-product, vendor/pixel/themepicker/products/themepicker.mk)
+endif
