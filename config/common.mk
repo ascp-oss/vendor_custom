@@ -79,6 +79,7 @@ endif
 PRODUCT_PACKAGES += \
     FrameworkOverlayCustom \
     GoogleDialerOverlayCustom \
+    PixelLauncherOverlayCustom \
     SettingsOverlayCustom
 
 # Permissions
