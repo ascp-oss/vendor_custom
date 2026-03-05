@@ -80,6 +80,7 @@ PRODUCT_PACKAGES += \
     FrameworkOverlayCustom \
     GoogleDialerOverlayCustom \
     PixelLauncherOverlayCustom \
+    PixelLauncherNoGestureHintOverlay \
     SettingsOverlayCustom
 
 # Permissions
