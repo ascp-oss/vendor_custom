@@ -15,3 +15,14 @@ PRODUCT_PRODUCT_PROPERTIES += \
 $(call inherit-product, vendor/gms/products/gms.mk)
 $(call inherit-product, vendor/pixel/gsans/products/gsans.mk)
 endif
+
+# Clocks (SystemUI)
+PRODUCT_PACKAGES += \
+    SystemUIClocks-BigNum \
+    SystemUIClocks-Calligraphy \
+    SystemUIClocks-Flex \
+    SystemUIClocks-Growth \
+    SystemUIClocks-Inflate \
+    SystemUIClocks-Metro \
+    SystemUIClocks-NumOverlap \
+    SystemUIClocks-Weather
