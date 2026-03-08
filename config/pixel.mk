@@ -13,7 +13,6 @@ PRODUCT_PRODUCT_PROPERTIES += \
     with_google_apps=true
 
 $(call inherit-product, vendor/gms/products/gms.mk)
-$(call inherit-product, vendor/pixel/gsans/products/gsans.mk)
 endif
 
 # Clocks (SystemUI)
