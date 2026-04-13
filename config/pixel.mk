@@ -283,4 +283,5 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     AxSandbox \
     AppLocker \
-    OmniJaws
+    OmniJaws \
+    AxThemePicker
