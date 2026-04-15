@@ -281,6 +281,7 @@ PRODUCT_COPY_FILES += \
 
 # ASCP OS packages
 PRODUCT_PACKAGES += \
+    AxQuickLook \
     AxSandbox \
     AppLocker \
     OmniJaws \
