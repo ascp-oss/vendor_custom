@@ -207,7 +207,6 @@ PRODUCT_PACKAGES += \
     FontScientificaOverlay \
     FontSofiaSansOverlay \
     FontUniversalisRegOverlay \
-    ShishufiedFonts \
     FontVladivostokOverlay \
     ClockFont26FGalaxySansOverlay \
     ClockFont3DIsometricBlackOverlay \
