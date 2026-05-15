@@ -102,3 +102,9 @@ ifneq ($(TARGET_SUPPORTS_QUICK_TAP),false)
 PRODUCT_PACKAGES += \
     ColumbusService
 endif
+
+# Revanced
+WITH_REVANCED ?= false
+ifeq ($(WITH_REVANCED),true)
+    $(call inherit-product, vendor/revanced/products/revanced.mk)
+endif
