@@ -29,7 +29,7 @@ function brunch()
 {
     breakfast $*
     if [ $? -eq 0 ]; then
-        mka pixelos
+        mka ascp
     else
         echo "No such item in brunch menu. Try 'breakfast'"
         return 1
@@ -67,7 +67,7 @@ alias bib=breakfast
 function eat()
 {
     if [ "$OUT" ] ; then
-        ZIPPATH=`ls -tr "$OUT"/PixelOS_*.zip | tail -1`
+        ZIPPATH=`ls -tr "$OUT"/ASCP_*.zip | tail -1`
         if [ ! -f $ZIPPATH ] ; then
             echo "Nothing to eat"
             return 1
@@ -323,7 +323,7 @@ function githubremote()
 
     local PROJECT=$(echo $REMOTE | sed -e "s#platform/#android/#g; s#/#_#g")
 
-    git remote add github https://github.com/PixelOS-AOSP/$PROJECT
+    git remote add github https://github.com/Pixelify-AOSP/$PROJECT
     echo "Remote 'github' created"
 }
 
