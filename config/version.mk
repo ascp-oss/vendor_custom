@@ -3,7 +3,7 @@ CUSTOM_BUILD_DATE := $(shell date -u +%Y%m%d-%H%M)
 CUSTOM_PLATFORM_VERSION := 16.2
 CUSTOM_VERSION_PROP := sixteen
 
-ASCP_VERSION := 5.4
+ASCP_VERSION := 5.5
 ASCP_MAINTAINER ?= Unofficial Maintainer
 ASCP_OFFICIAL ?= true
 
