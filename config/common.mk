@@ -91,9 +91,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     TouchGestures
 
-# Updater
-include vendor/custom/config/ota.mk
-
 # Version
 include vendor/custom/config/version.mk
 

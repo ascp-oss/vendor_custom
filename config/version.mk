@@ -23,10 +23,3 @@ PRODUCT_PRODUCT_PROPERTIES += \
     ro.custom.version=$(ASCP_PACKAGE_VERSION) \
     ro.ascp.version=$(ASCP_PACKAGE_VERSION) \
     ro.ascp.releasetype=$(ASCP_BUILDTYPE)
-
-# Updater
-ifeq ($(ASCP_OFFICIAL),true)
-    PRODUCT_PRODUCT_PROPERTIES += \
-        net.pixelos.build_type=ci \
-        net.pixelos.version=$(ASCP_VERSION)
-endif
