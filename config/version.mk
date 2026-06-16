@@ -22,4 +22,5 @@ PRODUCT_PRODUCT_PROPERTIES += \
     ro.ascp.release.version=$(ASCP_VERSION) \
     ro.custom.version=$(ASCP_PACKAGE_VERSION) \
     ro.ascp.version=$(ASCP_PACKAGE_VERSION) \
-    ro.ascp.releasetype=$(ASCP_BUILDTYPE)
+    ro.ascp.releasetype=$(ASCP_BUILDTYPE) \
+    ro.ascp.ota.test_mode=false

@@ -91,6 +91,17 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     TouchGestures
 
+# OpenDelta
+PRODUCT_PACKAGES += \
+    OpenDelta
+
+PRODUCT_COPY_FILES += \
+    vendor/custom/prebuilt/common/etc/permissions/custom-privapp-permissions.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/custom-privapp-permissions.xml \
+    vendor/custom/prebuilt/common/etc/permissions/custom-power-whitelist.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/custom-power-whitelist.xml
+
+$(foreach f,$(wildcard vendor/custom/prebuilt/common/etc/init/*.rc),\
+    $(eval PRODUCT_COPY_FILES += $(f):$(TARGET_COPY_OUT_SYSTEM)/etc/init/$(notdir $(f))))
+
 # Version
 include vendor/custom/config/version.mk
 
@@ -105,3 +116,6 @@ WITH_REVANCED ?= false
 ifeq ($(WITH_REVANCED),true)
     $(call inherit-product, vendor/revanced/products/revanced.mk)
 endif
+
+# Build tasks (must be included last, after PRODUCT_OUT is defined)
+include vendor/custom/build/tasks/pixelos.mk

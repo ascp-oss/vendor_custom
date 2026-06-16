@@ -13,19 +13,30 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+ifndef CUSTOM_BUILD_TASKS_PIXELOS_MK
+CUSTOM_BUILD_TASKS_PIXELOS_MK := 1
+
 # -----------------------------------------------------------------
 # PixelOS OTA update package
 
-CUSTOM_TARGET_PACKAGE := $(PRODUCT_OUT)/$(ASCP_PACKAGE_VERSION).zip
-
 SHA256 := prebuilts/build-tools/path/$(HOST_PREBUILT_TAG)/sha256sum
 
-$(CUSTOM_TARGET_PACKAGE): $(INTERNAL_OTA_PACKAGE_TARGET)
-	$(hide) mv -f $(INTERNAL_OTA_PACKAGE_TARGET) $(CUSTOM_TARGET_PACKAGE)
-	$(hide) $(SHA256) $(CUSTOM_TARGET_PACKAGE) | sed "s|$(PRODUCT_OUT)/||" > $(CUSTOM_TARGET_PACKAGE).sha256sum
-	@echo "Package Complete: $(CUSTOM_TARGET_PACKAGE)" >&2
-	@echo -n "json: "
-	@vendor/custom/build/tools/generate_update_json.sh $(TARGET_DEVICE) $(PRODUCT_OUT) $(CUSTOM_TARGET_PACKAGE)
+CUSTOM_TARGET_PACKAGE = $(PRODUCT_OUT)/$(ASCP_PACKAGE_VERSION).zip
 
 .PHONY: ascp
-ascp: $(CUSTOM_TARGET_PACKAGE) $(DEFAULT_GOAL)
+ascp: $(DEFAULT_GOAL) otapackage
+	$(hide) mv -f $(INTERNAL_OTA_PACKAGE_TARGET) $(CUSTOM_TARGET_PACKAGE)
+	$(hide) $(SHA256) $(CUSTOM_TARGET_PACKAGE) | sed "s|$(PRODUCT_OUT)/||" > $(CUSTOM_TARGET_PACKAGE).sha256sum
+ifeq ($(ASCP_BUILDTYPE),OFFICIAL)
+	@ASCP_BUILDTYPE=$(ASCP_BUILDTYPE) vendor/custom/build/tools/generate_ota.sh $(TARGET_DEVICE)
+else
+	@printf "\033[1;34m========================================================================\033[0m\n"
+	@printf "\033[1;32m                       ASCP OTA Package Complete                        \033[0m\n"
+	@printf "\033[1;34m========================================================================\033[0m\n"
+	@printf "\033[1;36m%-15s :\033[1;35m %s\033[0m\n" "Package Zip" "$(CUSTOM_TARGET_PACKAGE)"
+	@printf "\033[1;36m%-15s :\033[1;35m %s\033[0m\n" "SHA256" "$$(cat $(CUSTOM_TARGET_PACKAGE).sha256sum | awk '{print $$1}')"
+	@printf "\033[1;36m%-15s :\033[1;35m %s\033[0m\n" "Size" "$$(du -h $(CUSTOM_TARGET_PACKAGE) | awk '{print $$1}')"
+	@printf "\033[1;34m========================================================================\033[0m\n"
+endif
+
+endif
