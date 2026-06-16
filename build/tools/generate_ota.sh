@@ -57,7 +57,9 @@ if [ -d "${BACKUP_DIR}/previous_target_files" ]; then
     PREV_ZIP_NAME=$(cat "${BACKUP_DIR}/previous_zip_name.txt" 2>/dev/null)
     
     if [ -n "$PREV_ZIP_NAME" ]; then
-        INC_ZIP_NAME="ASCP-incremental-${PREV_ZIP_NAME%.zip}-to-${NEW_ZIP_NAME}"
+        PREV_SUFFIX=$(echo "$PREV_ZIP_NAME" | sed 's/\.zip$//' | awk -F'-' '{print $(NF-1) "-" $NF}')
+        NEW_SUFFIX=$(echo "$NEW_ZIP_NAME" | sed 's/\.zip$//' | awk -F'-' '{print $(NF-1) "-" $NF}')
+        INC_ZIP_NAME="ASCP-incremental-${DEVICE}-${PREV_SUFFIX}-to-${NEW_SUFFIX}.zip"
         INC_ZIP_PATH="${PRODUCT_OUT}/${INC_ZIP_NAME}"
         
         echo "Found previous target files. Generating incremental OTA..." >> "$LOG_FILE"
