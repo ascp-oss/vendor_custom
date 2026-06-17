@@ -8,7 +8,7 @@ fi
 
 PRODUCT_OUT="out/target/product/${DEVICE}"
 TARGET_FILES_DIR="${PRODUCT_OUT}/obj/PACKAGING/target_files_intermediates/custom_${DEVICE}-target_files"
-BACKUP_DIR="vendor/custom/target_files/${DEVICE}"
+BACKUP_DIR="target_files/${DEVICE}"
 
 # We only run if ASCP_BUILDTYPE is OFFICIAL
 if [ "${ASCP_BUILDTYPE}" != "OFFICIAL" ]; then
